@@ -1,0 +1,32 @@
+{
+  "name": "demembrement",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Appli qui réalise le calcul des droits de démembrement et frais associés (frais notaire et taxes)",
+  "author": {
+    "name": "ESHome33",
+    "email": "contact@eshome.fr",
+    "url": "https://github.com/esHome33"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.13",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4"
+  }
+}
