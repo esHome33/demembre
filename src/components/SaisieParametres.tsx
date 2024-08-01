@@ -17,17 +17,16 @@ const SaisieParametres = (props: Props) => {
     const [age, setAge] = useState<string>('');
     const [nbe, setNbe] = useState<string>('');
     const [pro, setPro] = useState<string>('');
+    const [recalc, setRecalc] = useState(false);
 
     useEffect(() => {
         const val = Number(age);
-        if (val) {
-            const p = props;
-            if (props.age_chg) {
-                props.age_chg(val);
-            }
+        if (val && props.age_chg) {
+            props.age_chg(val);
+            setRecalc(!recalc);
         } else {
             props.invalidate();
-            //console.log('invalidation age');
+            setRecalc(!recalc);
         }
     }, [age]);
 
@@ -36,6 +35,7 @@ const SaisieParametres = (props: Props) => {
         if (val) {
             if (props.enf_chg) {
                 props.enf_chg(val);
+                setRecalc(!recalc);
             }
         } else {
             //console.log('invalidation enfants');
@@ -48,6 +48,7 @@ const SaisieParametres = (props: Props) => {
         if (val) {
             if (props.pro_chg) {
                 props.pro_chg(val);
+                setRecalc(!recalc);
             }
         } else {
             props.invalidate();
@@ -57,14 +58,14 @@ const SaisieParametres = (props: Props) => {
 
     return (
         <div
-            className='flex flex-col space-y-2 justify-start '
+            className='flex flex-col space-y-1 justify-start'
         >
             <div
                 className='flex justify-start space-x-4 my-4 '
             >
                 <span
                     id="labelage"
-                    className='flex-1'
+                    className='flex-1 my-auto'
                 >
                     Age donateur :
                 </span>
@@ -72,7 +73,7 @@ const SaisieParametres = (props: Props) => {
                     aria-labelledby='labelage'
                     value={age}
                     onChange={(e) => { e.preventDefault(); setAge(e.target.value) }}
-                    className='max-h-8 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg'
+                    className='h-10 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg -mb-3'
                 />
             </div>
 
@@ -81,7 +82,7 @@ const SaisieParametres = (props: Props) => {
             >
                 <span
                     id="labelprop"
-                    className='flex-1'
+                    className='flex-1 my-auto'
                 >
                     Nb propriétés :
                 </span>
@@ -89,7 +90,7 @@ const SaisieParametres = (props: Props) => {
                     aria-labelledby='labelprop'
                     value={pro}
                     onChange={(e) => { e.preventDefault(); setPro(e.target.value) }}
-                    className='max-h-8 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg'
+                    className='h-10 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg'
                 />
             </div>
 
@@ -97,16 +98,16 @@ const SaisieParametres = (props: Props) => {
                 className='flex justify-start space-x-4 my-4'
             >
                 <span
-                    id="labelprop"
-                    className='flex-1'
+                    id="labelenf"
+                    className='flex-1 my-auto'
                 >
                     Nb enfants :
                 </span>
                 <input
-                    aria-labelledby='labelprop'
+                    aria-labelledby='labelenf'
                     value={nbe}
                     onChange={(e) => { e.preventDefault(); setNbe(e.target.value) }}
-                    className='max-h-8 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg'
+                    className='h-10 max-w-20 bg-yellow-50 text-orange-800 px-2 py-1 rounded-lg mt-1'
                 />
             </div>
 
@@ -114,6 +115,7 @@ const SaisieParametres = (props: Props) => {
                 nombre={pro}
                 calculateur={props.calculateur}
                 affiche={props.affiche}
+                rafraichir={recalc}
             />
         </div>
     )

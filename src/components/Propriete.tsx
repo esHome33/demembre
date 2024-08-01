@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 type Props = {
     valeur: string;
@@ -22,7 +22,7 @@ const Propriete = (props: Props) => {
             setValeur(val);
             if (val !== '') {
                 const retour = props.change_val(new_val, props.index);
-                setNuprop(`${retour}`);                
+                setNuprop(`${retour}`);
             } else {
                 setNuprop('');
             }
@@ -40,32 +40,40 @@ const Propriete = (props: Props) => {
     return (
         <div>
             <div
-                className='flex space-x-1 p-2'
+                className='flex flex-col sm:flex-row sm:space-x-2 space-y-1 p-2 w-fit'
             >
-                <span
-                    className='bg-red-800 text-red-50 text-xs rounded py-2 px-1'
-                >
-                    val
-                </span>
-                <input
-                    className='max-w-24 bg-green-200 text-green-700 p-2'
-                    value={valeur}
-                    onChange={chgt_valeur}
-                />
-                <span
-                    className='bg-red-800 text-red-50 text-xs rounded py-2 px-1'
-                >
-                    nue-prop
-                </span>
-                <input
-                    className='max-w-24 bg-slate-300 text-slate-900 p-2'
-                    value={nuprop}
-                    readOnly
-                />
+                <div className='flex flex-row space-x-1 h-10 my-auto'>
+
+                    <span
+                        className='bg-red-800 text-red-50 text-xs rounded pt-2 px-1 sm:w-10 text-center'
+                    >
+                        val
+                    </span>
+                    <input
+                        className=' bg-green-200 text-green-700 p-2 text-sm rounded w-24 sm:w-20'
+                        value={valeur === undefined ? "" :
+                            valeur === "0" ? "":valeur}
+                        onChange={chgt_valeur}
+                    />
+                </div>
+
+                <div className='flex flex-row space-x-1 h-10 my-auto'>
+                    <div
+                        className='bg-red-800 text-red-50 text-xs rounded py-1 px-1 text-wrap text-center max-w-10'
+                    >
+                        nue-prop
+                    </div>
+                    <input
+                        className=' bg-slate-300 text-slate-900 p-2 text-sm rounded w-[5.2rem] sm:w-20'
+                        value={nuprop === undefined ? "" :
+                            nuprop === "0"?"":nuprop}
+                        readOnly
+                    />
+                </div>
                 <button
-                    className='p-2 bg-red-500 hover:bg-red-700 rounded'
+                    className='p-2 bg-red-500 hover:bg-red-700 rounded min-w-10 max-w-[8.8rem]'
                     onClick={bton_click}
-                >Valide</button>
+                >OK</button>
             </div>
         </div>
     )

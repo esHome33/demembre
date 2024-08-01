@@ -39,22 +39,22 @@ const Calc = (props: Props) => {
             = transforme(age, nb_enfants, newval);
         setCc(new Calc_donation(agen, nb_enfants_num, nb_proprietes_num));
         setNb_proprietes(newval);
-        setReset(()=>false);
+        setReset(!reset);
     }
 
     const invalidate = () => {
         setCc(undefined);
-        setReset(true);        
+        setReset(!reset);
     }
 
     const force = () => {
-        setReset(()=>!reset);
+        setReset(!reset);
     }
 
 
     return (
         <div
-            className='flex flex-col space-y-4 mb-10'
+            className='flex flex-col space-y-4 mb-10 max-w-lg mx-auto'
         >
             <SaisieParametres
                 age_chg={change_age}
@@ -65,7 +65,7 @@ const Calc = (props: Props) => {
                 affiche={force}
             />
             <hr
-                className='h-2 border-red-200 border-2 rounded-full'
+                className='h-1 border-blue-200 border-2 rounded-full'
             ></hr>
             <Calculs
                 calculateur={cc}
