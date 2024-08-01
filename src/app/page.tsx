@@ -25,7 +25,7 @@ export default function Home() {
 					|
 					<Link
 						href={"/data"}
-						className="ml-2 text-xs text-blue-200"
+						className="ml-2 text-xs text-blue-900 dark:text-blue-200"
 					>
 						données calculs
 					</Link>

@@ -45,7 +45,9 @@ const Propriete = (props: Props) => {
                 <div className='flex flex-row space-x-1 h-10 my-auto'>
 
                     <span
-                        className='bg-red-800 text-red-50 text-xs rounded pt-2 px-1 sm:w-10 text-center'
+                        className='dark:bg-red-800 dark:text-red-50
+                        bg-slate-300 text-blue-950
+                        text-xs rounded pt-2 px-1 sm:w-10 text-center'
                     >
                         val
                     </span>
@@ -59,19 +61,26 @@ const Propriete = (props: Props) => {
 
                 <div className='flex flex-row space-x-1 h-10 my-auto'>
                     <div
-                        className='bg-red-800 text-red-50 text-xs rounded py-1 px-1 text-wrap text-center max-w-10'
+                        className='dark:bg-red-800 dark:text-red-50 
+                        bg-slate-300 text-blue-950
+                        text-xs 
+                        rounded py-1 px-1 text-wrap text-center max-w-10'
                     >
                         nue-prop
                     </div>
                     <input
-                        className=' bg-slate-300 text-slate-900 p-2 text-sm rounded w-[5.2rem] sm:w-20'
+                        className=' bg-slate-300 text-slate-900 
+                        p-2 text-sm rounded w-[5.2rem] sm:w-20'
                         value={nuprop === undefined ? "" :
                             nuprop === "0"?"":nuprop}
                         readOnly
                     />
                 </div>
                 <button
-                    className='p-2 bg-red-500 hover:bg-red-700 rounded min-w-10 max-w-[8.8rem]'
+                    className='p-2 
+                    bg-transparent border border-black text-black
+                    dark:bg-red-500 dark:hover:bg-red-700 dark:border-none dark:text-white
+                    rounded min-w-10 max-w-[8.8rem]'
                     onClick={bton_click}
                 >OK</button>
             </div>
